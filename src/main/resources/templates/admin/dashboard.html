@@ -9,7 +9,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Panel Operativo | Los Chaskis</title>
+    <title>Dashboard Administrativo | Los Chaskis</title>
 
     <link rel="icon"
           type="image/png"
@@ -37,60 +37,72 @@
     <link rel="stylesheet"
           th:href="@{/css/admin.css}">
 
-    <link rel="stylesheet"
-          th:href="@{/css/supervisor.css}">
-
 </head>
 
 <body>
 
 <div class="app-wrapper">
 
-    <div th:replace="~{fragments/layout-supervisor :: sidebar}"></div>
+    <div th:replace="~{fragments/layout-admin :: sidebar}"></div>
 
 
     <main class="app-main">
 
+        <!-- BARRA MÓVIL -->
+        <div class="d-lg-none d-flex justify-content-between align-items-center mb-3 p-2 bg-white rounded shadow-sm">
+
+            <span class="fw-bold text-dark">
+
+                <i class="bi bi-speedometer2 text-warning me-1"></i>
+
+                Los Chaskis
+
+            </span>
+
+            <button class="btn btn-sm btn-outline-dark"
+                    type="button"
+                    onclick="document.getElementById('appSidebar').classList.toggle('show')">
+
+                <i class="bi bi-list fs-5"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- CABECERA -->
         <div class="page-header">
 
             <div>
 
                 <h1 class="page-title">
-                    Panel Operativo
+                    Dashboard Administrativo
                 </h1>
 
                 <p class="page-subtitle">
-                    Control de embarque, ocupación y operaciones del terminal.
+                    Resumen general de la gestión operativa de Transportes Los Chaskis.
                 </p>
 
             </div>
 
 
-            <div class="supervisor-terminal-card">
+            <div class="date-filter-pill">
 
-                <i class="bi bi-geo-alt-fill"></i>
+                <i class="bi bi-calendar3 text-warning"></i>
 
-                <div>
-
-                    <strong>
-                        TERMINAL PIURA
-                    </strong>
-
-                    <br>
-
-                    <span class="text-muted">
-                        Operación activa
-                    </span>
-
-                </div>
+                <span>
+                    Panel de Gestión
+                </span>
 
             </div>
 
         </div>
 
 
+        <!-- KPIs -->
         <div class="stat-cards-grid">
 
+            <!-- BUSES -->
             <div class="chaski-stat-card">
 
                 <div class="stat-icon-circle stat-icon-navy">
@@ -102,15 +114,16 @@
                 <div class="stat-content">
 
                     <div class="stat-title">
-                        Viajes del Día
+                        Total de Buses
                     </div>
 
-                    <div class="stat-number">
-                        3
+                    <div class="stat-number"
+                         th:text="${totalBuses}">
+                        0
                     </div>
 
                     <div class="stat-description">
-                        Salidas asignadas
+                        Unidades registradas
                     </div>
 
                 </div>
@@ -118,26 +131,28 @@
             </div>
 
 
+            <!-- CHOFERES -->
             <div class="chaski-stat-card">
 
                 <div class="stat-icon-circle stat-icon-gold">
 
-                    <i class="bi bi-people-fill"></i>
+                    <i class="bi bi-person-vcard-fill"></i>
 
                 </div>
 
                 <div class="stat-content">
 
                     <div class="stat-title">
-                        Pasajeros
+                        Total de Choferes
                     </div>
 
-                    <div class="stat-number">
-                        26
+                    <div class="stat-number"
+                         th:text="${totalChoferes}">
+                        0
                     </div>
 
                     <div class="stat-description">
-                        Pasajes registrados
+                        Conductores registrados
                     </div>
 
                 </div>
@@ -145,26 +160,28 @@
             </div>
 
 
+            <!-- RUTAS -->
             <div class="chaski-stat-card">
 
                 <div class="stat-icon-circle stat-icon-carbon">
 
-                    <i class="bi bi-person-check-fill"></i>
+                    <i class="bi bi-map-fill"></i>
 
                 </div>
 
                 <div class="stat-content">
 
                     <div class="stat-title">
-                        Abordados
+                        Total de Rutas
                     </div>
 
-                    <div class="stat-number">
-                        21
+                    <div class="stat-number"
+                         th:text="${totalRutas}">
+                        0
                     </div>
 
                     <div class="stat-description">
-                        Control confirmado
+                        Rutas configuradas
                     </div>
 
                 </div>
@@ -172,26 +189,28 @@
             </div>
 
 
+            <!-- VIAJES -->
             <div class="chaski-stat-card">
 
                 <div class="stat-icon-circle stat-icon-silver">
 
-                    <i class="bi bi-hourglass-split"></i>
+                    <i class="bi bi-signpost-2-fill"></i>
 
                 </div>
 
                 <div class="stat-content">
 
                     <div class="stat-title">
-                        Pendientes
+                        Total de Viajes
                     </div>
 
-                    <div class="stat-number">
-                        3
+                    <div class="stat-number"
+                         th:text="${totalViajes}">
+                        0
                     </div>
 
                     <div class="stat-description">
-                        Pendientes de abordar
+                        Viajes registrados
                     </div>
 
                 </div>
@@ -201,128 +220,334 @@
         </div>
 
 
-        <div class="row g-4">
+        <!-- ACCESOS RÁPIDOS -->
+        <div class="chaski-chart-card mb-4">
 
-            <div class="col-xl-8">
+            <div class="chart-card-header">
 
-                <div class="supervisor-card h-100">
+                <div>
 
-                    <h2 class="supervisor-card-title">
-                        Viaje Actual
+                    <h2 class="chart-card-title">
+                        Gestión Administrativa
                     </h2>
 
+                    <small class="text-muted">
+                        Acceso rápido a los principales módulos del sistema.
+                    </small>
 
-                    <div class="row g-4">
+                </div>
 
-                        <div class="col-md-5">
+            </div>
 
-                            <div class="supervisor-bus-photo">
 
-                                <img th:src="@{/img/bus-confort.png}"
-                                     alt="Bus Confort Los Chaskis">
+            <div class="row g-3">
+
+                <div class="col-md-6 col-xl-3">
+
+                    <a th:href="@{/admin/buses}"
+                       class="text-decoration-none">
+
+                        <div class="border rounded-3 p-3 h-100">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="stat-icon-circle sm stat-icon-navy">
+
+                                    <i class="bi bi-bus-front"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong class="text-dark d-block">
+                                        Buses
+                                    </strong>
+
+                                    <small class="text-muted">
+                                        Gestionar flota
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-6 col-xl-3">
+
+                    <a th:href="@{/admin/choferes}"
+                       class="text-decoration-none">
+
+                        <div class="border rounded-3 p-3 h-100">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="stat-icon-circle sm stat-icon-gold">
+
+                                    <i class="bi bi-person-vcard"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong class="text-dark d-block">
+                                        Choferes
+                                    </strong>
+
+                                    <small class="text-muted">
+                                        Gestionar personal
+                                    </small>
+
+                                </div>
 
                             </div>
 
                         </div>
 
+                    </a>
 
-                        <div class="col-md-7">
-
-                            <div class="supervisor-bus-data">
-
-                                <span>
-                                    Unidad
-                                </span>
-
-                                <strong>
-                                    CHK-201
-                                </strong>
-
-                            </div>
+                </div>
 
 
-                            <div class="supervisor-bus-data">
+                <div class="col-md-6 col-xl-3">
 
-                                <span>
-                                    Servicio
-                                </span>
+                    <a th:href="@{/admin/rutas}"
+                       class="text-decoration-none">
 
-                                <strong>
-                                    Confort 160°
-                                </strong>
+                        <div class="border rounded-3 p-3 h-100">
 
-                            </div>
+                            <div class="d-flex align-items-center gap-3">
 
+                                <div class="stat-icon-circle sm stat-icon-carbon">
 
-                            <div class="supervisor-bus-data">
+                                    <i class="bi bi-map"></i>
 
-                                <span>
-                                    Ruta
-                                </span>
+                                </div>
 
-                                <strong>
-                                    Lima → Piura
-                                </strong>
+                                <div>
 
-                            </div>
+                                    <strong class="text-dark d-block">
+                                        Rutas
+                                    </strong>
 
+                                    <small class="text-muted">
+                                        Gestionar recorridos
+                                    </small>
 
-                            <div class="supervisor-bus-data">
-
-                                <span>
-                                    Hora
-                                </span>
-
-                                <strong>
-                                    20:00
-                                </strong>
-
-                            </div>
-
-
-                            <div class="supervisor-bus-data">
-
-                                <span>
-                                    Chofer
-                                </span>
-
-                                <strong>
-                                    Carlos Mendoza Ruiz
-                                </strong>
+                                </div>
 
                             </div>
 
                         </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-6 col-xl-3">
+
+                    <a th:href="@{/admin/viajes}"
+                       class="text-decoration-none">
+
+                        <div class="border rounded-3 p-3 h-100">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="stat-icon-circle sm stat-icon-silver">
+
+                                    <i class="bi bi-signpost-2"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong class="text-dark d-block">
+                                        Viajes
+                                    </strong>
+
+                                    <small class="text-muted">
+                                        Programar viajes
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GRÁFICOS -->
+        <div class="chart-cards-grid">
+
+            <!-- ESTADO BUSES -->
+            <div class="chaski-chart-card">
+
+                <div class="chart-card-header">
+
+                    <div>
+
+                        <h2 class="chart-card-title">
+                            Estado de la Flota
+                        </h2>
+
+                        <small class="text-muted">
+                            Distribución actual de buses por estado.
+                        </small>
 
                     </div>
 
+                    <i class="bi bi-bar-chart-fill text-warning fs-4"></i>
 
-                    <div class="row g-3 mt-3">
+                </div>
 
-                        <div class="col-md-6">
 
-                            <a th:href="@{/supervisor/embarque}"
-                               class="btn-chaski-navy w-100">
+                <div class="chart-canvas-container">
 
-                                <i class="bi bi-person-check-fill"></i>
+                    <canvas id="graficoEstadoBuses"
+                            th:attr="
+                                data-activos=${busesActivos},
+                                data-mantenimiento=${busesMantenimiento},
+                                data-inactivos=${busesInactivos}">
+                    </canvas>
 
-                                Gestionar Embarque
+                </div>
 
-                            </a>
+            </div>
+
+
+            <!-- ESTADO VIAJES -->
+            <div class="chaski-chart-card">
+
+                <div class="chart-card-header">
+
+                    <div>
+
+                        <h2 class="chart-card-title">
+                            Estado de Viajes
+                        </h2>
+
+                        <small class="text-muted">
+                            Viajes programados y cancelados.
+                        </small>
+
+                    </div>
+
+                    <i class="bi bi-pie-chart-fill text-warning fs-4"></i>
+
+                </div>
+
+
+                <div class="chart-canvas-container">
+
+                    <canvas id="graficoEstadoViajes"
+                            th:attr="
+                                data-programados=${viajesProgramados},
+                                data-cancelados=${viajesCancelados}">
+                    </canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESUMEN -->
+        <div class="chaski-chart-card">
+
+            <div class="chart-card-header">
+
+                <div>
+
+                    <h2 class="chart-card-title">
+                        Resumen del Sistema
+                    </h2>
+
+                    <small class="text-muted">
+                        Estado general de los módulos administrativos.
+                    </small>
+
+                </div>
+
+                <a th:href="@{/admin/reportes}"
+                   class="btn-chaski-gold">
+
+                    <i class="bi bi-bar-chart-line"></i>
+
+                    Ver Reportes
+
+                </a>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="border rounded-3 p-4 h-100">
+
+                        <div class="d-flex align-items-center gap-3 mb-3">
+
+                            <div class="stat-icon-circle sm stat-icon-navy">
+
+                                <i class="bi bi-bus-front-fill"></i>
+
+                            </div>
+
+                            <strong class="text-dark">
+                                Estado de Buses
+                            </strong>
 
                         </div>
 
+                        <div class="d-flex justify-content-between mb-2">
 
-                        <div class="col-md-6">
+                            <span class="text-muted small">
+                                Activos
+                            </span>
 
-                            <a th:href="@{/supervisor/plano-asientos}"
-                               class="btn-chaski-gold w-100">
+                            <strong th:text="${busesActivos}">
+                                0
+                            </strong>
 
-                                <i class="bi bi-grid-3x3-gap-fill"></i>
+                        </div>
 
-                                Ver Plano
+                        <div class="d-flex justify-content-between mb-2">
 
-                            </a>
+                            <span class="text-muted small">
+                                Mantenimiento
+                            </span>
+
+                            <strong th:text="${busesMantenimiento}">
+                                0
+                            </strong>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+
+                            <span class="text-muted small">
+                                Inactivos
+                            </span>
+
+                            <strong th:text="${busesInactivos}">
+                                0
+                            </strong>
 
                         </div>
 
@@ -330,78 +555,85 @@
 
                 </div>
 
-            </div>
 
+                <div class="col-md-4">
 
-            <div class="col-xl-4">
+                    <div class="border rounded-3 p-4 h-100">
 
-                <div class="supervisor-card h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
 
-                    <h2 class="supervisor-card-title">
-                        Resumen Operativo
-                    </h2>
+                            <div class="stat-icon-circle sm stat-icon-gold">
 
+                                <i class="bi bi-signpost-2-fill"></i>
 
-                    <div class="border rounded-3">
+                            </div>
 
-                        <div class="supervisor-counter-row">
-
-                            <span>
-                                <span class="supervisor-counter-dot dot-boarded"></span>
-
-                                Abordó
-                            </span>
-
-                            <strong>
-                                21
+                            <strong class="text-dark">
+                                Estado de Viajes
                             </strong>
 
                         </div>
 
+                        <div class="d-flex justify-content-between mb-2">
 
-                        <div class="supervisor-counter-row">
-
-                            <span>
-                                <span class="supervisor-counter-dot dot-pending"></span>
-
-                                Pendiente
+                            <span class="text-muted small">
+                                Programados
                             </span>
 
-                            <strong>
-                                3
+                            <strong th:text="${viajesProgramados}">
+                                0
                             </strong>
 
                         </div>
 
+                        <div class="d-flex justify-content-between">
 
-                        <div class="supervisor-counter-row">
-
-                            <span>
-                                <span class="supervisor-counter-dot dot-absent"></span>
-
-                                Ausente
+                            <span class="text-muted small">
+                                Cancelados
                             </span>
 
-                            <strong>
-                                2
+                            <strong th:text="${viajesCancelados}">
+                                0
                             </strong>
 
                         </div>
 
+                    </div>
 
-                        <div class="supervisor-counter-row">
+                </div>
 
-                            <span>
-                                <span class="supervisor-counter-dot dot-free"></span>
 
-                                Libre
-                            </span>
+                <div class="col-md-4">
 
-                            <strong>
-                                6
+                    <div class="border rounded-3 p-4 h-100">
+
+                        <div class="d-flex align-items-center gap-3 mb-3">
+
+                            <div class="stat-icon-circle sm stat-icon-carbon">
+
+                                <i class="bi bi-graph-up-arrow"></i>
+
+                            </div>
+
+                            <strong class="text-dark">
+                                Reportes
                             </strong>
 
                         </div>
+
+                        <p class="text-muted small mb-3">
+                            Consulta información gráfica sobre la flota,
+                            servicios y destinos registrados.
+                        </p>
+
+                        <a th:href="@{/admin/reportes}"
+                           class="text-decoration-none fw-bold text-dark">
+
+                            Ir a reportes
+
+                            <i class="bi bi-arrow-right ms-1"></i>
+
+                        </a>
 
                     </div>
 
@@ -418,7 +650,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script th:src="@{/js/supervisor.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+<script th:src="@{/js/app.js}"></script>
+
+<script th:src="@{/js/reportes.js}"></script>
 
 </body>
 </html>
