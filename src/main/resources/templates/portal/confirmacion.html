@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Compra Confirmada | Los Chaskis</title>
+
+    <link rel="icon"
+          type="image/png"
+          th:href="@{/img/favicon.png}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          th:href="@{/css/styles.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/portal.css}">
+
+</head>
+
+<body>
+
+<div th:replace="~{fragments/layout-portal :: navbar}"></div>
+
+
+<div class="container py-5">
+
+    <!-- STEPPER -->
+    <div class="portal-stepper chaski-card p-3 mb-5">
+
+        <div class="step-item completed">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>1 Viaje</span>
+        </div>
+
+        <div class="step-item completed">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>2 Asiento</span>
+        </div>
+
+        <div class="step-item completed">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>3 Pasajero</span>
+        </div>
+
+        <div class="step-item completed">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>4 Pago</span>
+        </div>
+
+        <div class="step-item completed">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>5 Confirmación</span>
+        </div>
+
+    </div>
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-xl-8">
+
+            <div class="chaski-card overflow-hidden">
+
+                <!-- CABECERA -->
+                <div class="text-center p-5"
+                     style="background:linear-gradient(135deg,#0D1B2A,#1B2E44);">
+
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                         style="width:82px;height:82px;background:#DCFCE7;color:#16A34A;">
+
+                        <i class="bi bi-check-lg"
+                           style="font-size:2.7rem;"></i>
+
+                    </div>
+
+                    <h1 class="fw-bold text-white fs-2">
+                        ¡Compra Confirmada!
+                    </h1>
+
+                    <p class="text-white-50 mb-0">
+                        Tu pasaje ha sido registrado correctamente.
+                    </p>
+
+                </div>
+
+
+                <div class="p-4 p-md-5">
+
+                    <!-- RESERVA -->
+                    <div class="text-center mb-5">
+
+                        <small class="text-muted text-uppercase fw-bold">
+                            Código de Reserva
+                        </small>
+
+                        <div class="display-6 fw-bold text-chaski-gold mt-1">
+                            CHK-2026-001
+                        </div>
+
+                        <small class="text-muted">
+                            Conserva este código para identificar tu viaje.
+                        </small>
+
+                    </div>
+
+
+                    <!-- PASAJE -->
+                    <div class="border rounded-4 overflow-hidden mb-4">
+
+                        <div class="p-3 px-4 d-flex justify-content-between align-items-center"
+                             style="background:#F7EFD2;">
+
+                            <div>
+
+                                <small class="text-muted d-block">
+                                    Servicio
+                                </small>
+
+                                <strong class="text-dark">
+                                    Chaski Confort 160°
+                                </strong>
+
+                            </div>
+
+                            <span class="badge bg-dark px-3 py-2">
+                                CHK-201
+                            </span>
+
+                        </div>
+
+
+                        <div class="p-4">
+
+                            <div class="row g-4">
+
+                                <div class="col-md-4">
+
+                                    <small class="text-muted d-block">
+                                        Origen
+                                    </small>
+
+                                    <strong class="fs-5">
+                                        Lima
+                                    </strong>
+
+                                    <div class="small text-muted mt-1">
+                                        20:00
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-4 text-md-center">
+
+                                    <small class="text-muted d-block">
+                                        Fecha
+                                    </small>
+
+                                    <strong class="fs-5">
+                                        10/10/2026
+                                    </strong>
+
+                                    <div class="small text-muted mt-1">
+                                        15 horas aprox.
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-4 text-md-end">
+
+                                    <small class="text-muted d-block">
+                                        Destino
+                                    </small>
+
+                                    <strong class="fs-5">
+                                        Piura
+                                    </strong>
+
+                                    <div class="small text-muted mt-1">
+                                        11:00 aprox.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <hr class="my-4">
+
+
+                            <div class="row g-3">
+
+                                <div class="col-md-4">
+
+                                    <small class="text-muted d-block">
+                                        Pasajero
+                                    </small>
+
+                                    <strong>
+                                        Pasajero Registrado
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="col-md-4">
+
+                                    <small class="text-muted d-block">
+                                        Asiento
+                                    </small>
+
+                                    <strong class="text-chaski-gold fs-5">
+                                        02A
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="col-md-4">
+
+                                    <small class="text-muted d-block">
+                                        Total Pagado
+                                    </small>
+
+                                    <strong class="text-success fs-5">
+                                        S/ 120.00
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MENSAJE -->
+                    <div class="alert alert-light border d-flex gap-3 align-items-start">
+
+                        <i class="bi bi-envelope-check text-chaski-gold fs-4"></i>
+
+                        <div>
+
+                            <strong class="d-block">
+                                Confirmación del pasaje
+                            </strong>
+
+                            <small class="text-muted">
+                                En una implementación completa, el comprobante y los datos
+                                de la reserva serían enviados al correo del pasajero.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACCIONES -->
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+
+                        <a th:href="@{/}"
+                           class="btn-chaski-navy">
+
+                            <i class="bi bi-house"></i>
+
+                            Volver al Inicio
+
+                        </a>
+
+
+                        <a th:href="@{/buscar}"
+                           class="btn-chaski-gold">
+
+                            <i class="bi bi-ticket-perforated"></i>
+
+                            Comprar Otro Pasaje
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div th:replace="~{fragments/layout-portal :: footer}"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script th:src="@{/js/app.js}"></script>
+
+<script th:src="@{/js/portal.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Viajes Disponibles | Los Chaskis</title>
+
+    <link rel="icon"
+          type="image/png"
+          th:href="@{/img/favicon.png}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          th:href="@{/css/styles.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/portal.css}">
+
+</head>
+
+<body>
+
+<div th:replace="~{fragments/layout-portal :: navbar}"></div>
+
+
+<div class="container py-4">
+
+    <!-- RESUMEN DE BÚSQUEDA -->
+    <div class="chaski-card p-3 px-md-4 mb-4">
+
+        <div class="row align-items-center g-3">
+
+            <div class="col-md-3">
+
+                <small class="text-muted fw-bold d-block text-uppercase portal-label">
+                    Origen
+                </small>
+
+                <span class="fw-bold text-dark">
+                    Lima
+                </span>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <small class="text-muted fw-bold d-block text-uppercase portal-label">
+                    Destino
+                </small>
+
+                <span class="fw-bold text-dark">
+                    Piura
+                </span>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <small class="text-muted fw-bold d-block text-uppercase portal-label">
+                    Fecha
+                </small>
+
+                <span class="fw-bold text-dark">
+                    10/10/2026
+                </span>
+
+            </div>
+
+
+            <div class="col-md-2">
+
+                <small class="text-muted fw-bold d-block text-uppercase portal-label">
+                    Pasajeros
+                </small>
+
+                <span class="fw-bold text-dark">
+                    1
+                </span>
+
+            </div>
+
+
+            <div class="col-md-1 text-md-end">
+
+                <a th:href="@{/buscar}"
+                   class="btn-chaski-gold rounded-circle p-0"
+                   style="width:42px;height:42px;">
+
+                    <i class="bi bi-pencil"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STEPPER -->
+    <div class="portal-stepper chaski-card p-3 mb-4">
+
+        <div class="step-item active">
+
+            <span class="step-pill">
+                1 Viaje
+            </span>
+
+        </div>
+
+        <div class="step-item">
+
+            <span class="step-pill">
+                2 Asiento
+            </span>
+
+        </div>
+
+        <div class="step-item">
+
+            <span class="step-pill">
+                3 Pasajero
+            </span>
+
+        </div>
+
+        <div class="step-item">
+
+            <span class="step-pill">
+                4 Pago
+            </span>
+
+        </div>
+
+        <div class="step-item">
+
+            <span class="step-pill">
+                5 Confirmación
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <!-- FILTROS -->
+        <div class="col-lg-3">
+
+            <div class="chaski-card p-4">
+
+                <h3 class="fw-bold fs-5 text-dark mb-4">
+                    Filtros
+                </h3>
+
+
+                <div class="mb-4">
+
+                    <h4 class="fw-bold fs-6 mb-3">
+                        Tipo de Servicio
+                    </h4>
+
+                    <div class="form-check mb-2">
+
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="filtroConfort"
+                               checked>
+
+                        <label class="form-check-label small"
+                               for="filtroConfort">
+
+                            Confort 160°
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="filtroImperial"
+                               checked>
+
+                        <label class="form-check-label small"
+                               for="filtroImperial">
+
+                            Imperial 180°
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <h4 class="fw-bold fs-6 mb-3">
+                        Horario
+                    </h4>
+
+                    <div class="form-check mb-2">
+
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="horarioNoche"
+                               checked>
+
+                        <label class="form-check-label small"
+                               for="horarioNoche">
+
+                            Noche
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="horarioTarde">
+
+                        <label class="form-check-label small"
+                               for="horarioTarde">
+
+                            Tarde
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h4 class="fw-bold fs-6 mb-3">
+                        Precio
+                    </h4>
+
+                    <small class="text-muted">
+                        Desde S/ 120.00
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULTADOS -->
+        <div class="col-lg-9">
+
+            <!-- ORDEN -->
+            <div class="portal-order-bar d-flex flex-wrap justify-content-between gap-3 mb-3">
+
+                <span>
+
+                    <i class="bi bi-clock-history me-1"></i>
+
+                    Horario de salida
+
+                </span>
+
+                <span class="opacity-75">
+
+                    <i class="bi bi-tag me-1"></i>
+
+                    Mejor precio
+
+                </span>
+
+                <span class="opacity-75">
+
+                    <i class="bi bi-lightning-charge me-1"></i>
+
+                    Más cómodo
+
+                </span>
+
+            </div>
+
+
+            <!-- BUS 1 -->
+            <div class="portal-bus-card">
+
+                <div class="d-flex flex-column flex-md-row justify-content-between gap-4">
+
+                    <div class="flex-grow-1">
+
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+
+                            <span class="badge bg-dark text-white px-3 py-2">
+                                CHASKI CONFORT 160°
+                            </span>
+
+                            <span class="badge bg-light text-dark border px-3 py-2">
+                                CHK-201
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex flex-wrap align-items-center gap-4 mb-3">
+
+                            <div>
+
+                                <small class="text-muted d-block">
+                                    Salida
+                                </small>
+
+                                <strong class="fs-4 text-dark">
+                                    20:00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="text-muted small border-start border-end px-4">
+
+                                <i class="bi bi-clock me-1"></i>
+
+                                15 hrs aprox.
+
+                            </div>
+
+
+                            <div>
+
+                                <small class="text-muted d-block">
+                                    Llegada estimada
+                                </small>
+
+                                <strong class="fs-4 text-dark">
+                                    11:00
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex flex-wrap gap-3 text-muted small">
+
+                            <span>
+
+                                <i class="bi bi-wifi text-warning me-1"></i>
+
+                                WiFi
+
+                            </span>
+
+                            <span>
+
+                                <i class="bi bi-tv text-warning me-1"></i>
+
+                                Pantalla
+
+                            </span>
+
+                            <span>
+
+                                <i class="bi bi-usb-plug text-warning me-1"></i>
+
+                                USB
+
+                            </span>
+
+                            <span class="fw-bold text-success">
+
+                                <i class="bi bi-person-check me-1"></i>
+
+                                18 asientos disponibles
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="portal-bus-price border-start-md ps-md-4 text-md-end">
+
+                        <small class="text-muted d-block">
+                            Precio por Pasaje
+                        </small>
+
+                        <div class="bus-price-text my-2">
+                            S/ 120.00
+                        </div>
+
+                        <a th:href="@{/asientos}"
+                           class="btn-chaski-gold w-100">
+
+                            Seleccionar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUS 2 -->
+            <div class="portal-bus-card">
+
+                <div class="d-flex flex-column flex-md-row justify-content-between gap-4">
+
+                    <div class="flex-grow-1">
+
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+
+                            <span class="badge bg-dark text-white px-3 py-2">
+                                CHASKI IMPERIAL 180°
+                            </span>
+
+                            <span class="badge bg-light text-dark border px-3 py-2">
+                                CHK-202
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex flex-wrap align-items-center gap-4 mb-3">
+
+                            <div>
+
+                                <small class="text-muted d-block">
+                                    Salida
+                                </small>
+
+                                <strong class="fs-4 text-dark">
+                                    22:30
+                                </strong>
+
+                            </div>
+
+
+                            <div class="text-muted small border-start border-end px-4">
+
+                                <i class="bi bi-clock me-1"></i>
+
+                                15 hrs aprox.
+
+                            </div>
+
+
+                            <div>
+
+                                <small class="text-muted d-block">
+                                    Llegada estimada
+                                </small>
+
+                                <strong class="fs-4 text-dark">
+                                    13:30
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex flex-wrap gap-3 text-muted small">
+
+                            <span>
+
+                                <i class="bi bi-wifi text-warning me-1"></i>
+
+                                WiFi Premium
+
+                            </span>
+
+                            <span>
+
+                                <i class="bi bi-tv text-warning me-1"></i>
+
+                                Pantalla
+
+                            </span>
+
+                            <span>
+
+                                <i class="bi bi-stars text-warning me-1"></i>
+
+                                Cama 180°
+
+                            </span>
+
+                            <span class="fw-bold text-success">
+
+                                <i class="bi bi-person-check me-1"></i>
+
+                                12 asientos disponibles
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="portal-bus-price border-start-md ps-md-4 text-md-end">
+
+                        <small class="text-muted d-block">
+                            Precio por Pasaje
+                        </small>
+
+                        <div class="bus-price-text my-2">
+                            S/ 150.00
+                        </div>
+
+                        <a th:href="@{/asientos}"
+                           class="btn-chaski-gold w-100">
+
+                            Seleccionar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div th:replace="~{fragments/layout-portal :: footer}"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/portal.js}"></script>
+
+</body>
+</html>

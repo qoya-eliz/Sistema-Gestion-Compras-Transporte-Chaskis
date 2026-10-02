@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<header th:fragment="navbar"
+        class="portal-topbar sticky-top">
+
+    <a th:href="@{/}"
+       class="brand-container">
+
+        <div class="brand-logo-icon">
+
+            <img th:src="@{/img/logo-icono.png}"
+                 class="brand-logo-img"
+                 alt="Los Chaskis">
+
+        </div>
+
+        <div>
+
+            <div class="brand-text-title">
+                Los <span>Chaskis</span>
+            </div>
+
+            <span class="brand-text-slogan">
+                Conectando caminos, uniendo destinos
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <ul class="portal-nav-links d-none d-lg-flex">
+
+        <li>
+            <a th:href="@{/}">
+                INICIO
+            </a>
+        </li>
+
+        <li>
+            <a th:href="@{/#nosotros}">
+                NOSOTROS
+            </a>
+        </li>
+
+        <li>
+            <a th:href="@{/#servicios}">
+                SERVICIOS
+            </a>
+        </li>
+
+        <li>
+            <a th:href="@{/#terminales}">
+                TERMINALES
+            </a>
+        </li>
+
+        <li>
+            <a th:href="@{/buscar}">
+                PASAJES
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="d-flex align-items-center gap-3">
+
+        <div class="text-white text-end small d-none d-md-block">
+
+            <span class="opacity-75">
+                Atención:
+            </span>
+
+            <strong class="text-chaski-gold">
+                (01) 418-1111
+            </strong>
+
+        </div>
+
+
+        <a th:href="@{/login}"
+           class="btn btn-sm btn-outline-warning rounded-pill px-3 fw-bold">
+
+            <i class="bi bi-shield-lock me-1"></i>
+
+            Intranet
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<footer th:fragment="footer"
+        class="portal-footer py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-4">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+                    <img th:src="@{/img/logo-horizontal.png}"
+                         alt="Los Chaskis"
+                         style="max-width:210px;height:auto;">
+
+                </div>
+
+                <p class="small text-white-50 mb-0">
+                    Transporte interprovincial con seguridad,
+                    comodidad y compromiso.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <h6 class="fw-bold mb-3 text-white">
+                    Atención al Cliente
+                </h6>
+
+                <ul class="list-unstyled small mb-0">
+
+                    <li class="mb-2">
+                        <a href="#">
+                            Libro de Reclamaciones
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="#">
+                            Términos y Condiciones
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Política de Privacidad
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <h6 class="fw-bold mb-3 text-white">
+                    Métodos de Pago
+                </h6>
+
+                <div class="d-flex gap-3 fs-3 text-chaski-gold">
+
+                    <i class="bi bi-credit-card-fill"></i>
+
+                    <i class="bi bi-qr-code-scan"></i>
+
+                    <i class="bi bi-bank"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary opacity-25 my-4">
+
+
+        <div class="d-flex justify-content-between flex-wrap gap-2">
+
+            <small class="text-white-50">
+                © 2026 Transportes Los Chaskis S.A.C.
+            </small>
+
+            <small class="text-white-50">
+                Sistema de Gestión y Compra de Pasajes
+            </small>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
