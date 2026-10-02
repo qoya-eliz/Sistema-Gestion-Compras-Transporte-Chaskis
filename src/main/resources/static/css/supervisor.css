@@ -1,0 +1,481 @@
+/* ==========================================================================
+   SUPERVISOR LOS CHASKIS
+   ========================================================================== */
+
+.supervisor-terminal-card {
+    padding:
+        10px 16px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    background-color: var(--blanco);
+
+    border:
+        1px solid var(--borde);
+
+    border-radius: 10px;
+
+    font-size: 0.78rem;
+
+    box-shadow: var(--sombra-suave);
+}
+
+.supervisor-terminal-card i {
+    color: var(--azul);
+
+    font-size: 1.45rem;
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.supervisor-card {
+    padding: 20px 22px;
+
+    background-color: var(--blanco);
+
+    border:
+        1px solid var(--borde);
+
+    border-radius: 14px;
+
+    box-shadow: var(--sombra-suave);
+}
+
+.supervisor-card-title {
+    margin:
+        0 0 14px;
+
+    color: var(--azul);
+
+    font-size: 0.86rem;
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   BUSCADOR
+   ========================================================================== */
+
+.supervisor-search-mode {
+    display: inline-flex;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--borde);
+
+    border-radius: 8px;
+}
+
+.supervisor-search-mode input {
+    display: none;
+}
+
+.supervisor-search-mode label {
+    margin: 0;
+
+    padding:
+        10px 20px;
+
+    color: var(--carbon);
+
+    background-color: var(--blanco);
+
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.supervisor-search-mode input:checked + label {
+    color: var(--blanco);
+
+    background-color: var(--azul);
+}
+
+/* ==========================================================================
+   BUS SELECCIONADO
+   ========================================================================== */
+
+.supervisor-bus-photo {
+    position: relative;
+
+    width: 100%;
+    min-height: 190px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--dorado);
+
+    font-size: 3.2rem;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--azul),
+            var(--azul-claro)
+        );
+
+    border-radius: 10px;
+}
+
+.supervisor-bus-photo img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.supervisor-bus-data {
+    padding:
+        9px 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    border-bottom:
+        1px solid var(--plata-suave);
+
+    font-size: 0.82rem;
+}
+
+.supervisor-bus-data:last-child {
+    border-bottom: 0;
+}
+
+.supervisor-bus-data span {
+    color: var(--plata-oscuro);
+}
+
+.supervisor-bus-data strong {
+    text-align: right;
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+
+.btn-supervisor {
+    padding:
+        9px 15px;
+
+    border: 0;
+    border-radius: 7px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    color: var(--blanco);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.btn-supervisor-success {
+    background-color: var(--verde);
+}
+
+.btn-supervisor-danger {
+    background-color: var(--rojo);
+}
+
+.btn-supervisor:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   CONTADORES
+   ========================================================================== */
+
+.supervisor-counter-row {
+    padding:
+        9px 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid var(--plata-suave);
+
+    font-size: 0.80rem;
+}
+
+.supervisor-counter-row:last-child {
+    border-bottom: 0;
+}
+
+.supervisor-counter-dot {
+    width: 11px;
+    height: 11px;
+
+    display: inline-block;
+
+    margin-right: 7px;
+
+    border-radius: 50%;
+}
+
+.dot-boarded {
+    background-color: var(--verde);
+}
+
+.dot-absent {
+    background-color: var(--rojo);
+}
+
+.dot-pending {
+    background-color: #F5B800;
+}
+
+.dot-free {
+    background-color: var(--plata-suave);
+
+    border:
+        1px solid var(--plata);
+}
+
+/* ==========================================================================
+   MANIFIESTO
+   ========================================================================== */
+
+.manifest-table {
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.manifest-table thead th {
+    padding:
+        12px 14px;
+
+    color: var(--blanco);
+
+    background-color: var(--azul);
+
+    font-size: 0.74rem;
+
+    white-space: nowrap;
+}
+
+.manifest-table thead th:first-child {
+    border-radius:
+        9px 0 0 9px;
+}
+
+.manifest-table thead th:last-child {
+    border-radius:
+        0 9px 9px 0;
+}
+
+.manifest-table tbody td {
+    padding:
+        11px 14px;
+
+    vertical-align: middle;
+
+    border-bottom:
+        1px solid var(--plata-suave);
+
+    font-size: 0.81rem;
+}
+
+.boarding-badge {
+    padding:
+        4px 9px;
+
+    display: inline-block;
+
+    border-radius: 6px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+.boarding-boarded {
+    color: var(--verde-texto);
+    background-color: var(--verde-suave);
+}
+
+.boarding-pending {
+    color: #92700C;
+    background-color: #FFF6D6;
+}
+
+.boarding-absent {
+    color: var(--rojo-texto);
+    background-color: var(--rojo-suave);
+}
+
+/* ==========================================================================
+   PLANO DEL BUS
+   ========================================================================== */
+
+.supervisor-bus-plan {
+    position: relative;
+
+    overflow-x: auto;
+
+    padding:
+        25px 28px 25px 108px;
+
+    background-color: #303844;
+
+    border:
+        4px solid var(--azul);
+
+    border-radius:
+        60px 28px 28px 60px;
+}
+
+.supervisor-bus-plan::before {
+    content: "";
+
+    position: absolute;
+
+    left: 34px;
+    top: 50%;
+
+    width: 46px;
+    height: 46px;
+
+    transform:
+        translateY(-50%);
+
+    border:
+        7px solid var(--plata);
+
+    border-radius: 50%;
+}
+
+.bus-plan-row {
+    min-width: max-content;
+
+    padding:
+        12px 0;
+
+    display: flex;
+
+    gap: 14px;
+
+    border-bottom:
+        3px dashed
+        rgba(255, 255, 255, 0.10);
+}
+
+.bus-plan-row:last-child {
+    border-bottom: 0;
+}
+
+.bus-plan-column {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.supervisor-seat {
+    width: 54px;
+    height: 40px;
+
+    border:
+        2px solid rgba(0, 0, 0, 0.22);
+
+    border-radius: 8px;
+
+    color: #1F2937;
+
+    font-size: 0.76rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.13s ease,
+        box-shadow 0.13s ease;
+}
+
+.supervisor-seat:hover {
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(212, 175, 55, 0.55);
+}
+
+.supervisor-seat.boarded {
+    background-color: #4ADE80;
+}
+
+.supervisor-seat.pending {
+    background-color: #FCD34D;
+}
+
+.supervisor-seat.absent {
+    color: var(--blanco);
+    background-color: #EF4444;
+}
+
+.supervisor-seat.free {
+    background-color: #F1F1EF;
+
+    cursor: default;
+}
+
+.supervisor-seat.free:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   LEYENDA
+   ========================================================================== */
+
+.seat-legend-item {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-right: 16px;
+
+    font-size: 0.77rem;
+}
+
+.seat-legend-box {
+    width: 17px;
+    height: 17px;
+
+    display: inline-block;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.18);
+
+    border-radius: 4px;
+}

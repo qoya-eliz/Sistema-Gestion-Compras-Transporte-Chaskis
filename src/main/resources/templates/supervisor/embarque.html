@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Control de Embarque | Los Chaskis</title>
+
+    <link rel="icon"
+          type="image/png"
+          th:href="@{/img/favicon.png}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          th:href="@{/css/styles.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/admin.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/supervisor.css}">
+
+</head>
+
+<body>
+
+<div class="app-wrapper">
+
+    <div th:replace="~{fragments/layout-supervisor :: sidebar}"></div>
+
+
+    <main class="app-main">
+
+        <div class="page-header">
+
+            <div>
+
+                <h1 class="page-title">
+                    Control de Embarque
+                </h1>
+
+                <p class="page-subtitle">
+                    Gestión del abordaje de pasajeros del viaje seleccionado.
+                </p>
+
+            </div>
+
+
+            <div class="supervisor-terminal-card">
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+                <div>
+
+                    <strong>
+                        TERMINAL PIURA
+                    </strong>
+
+                    <br>
+
+                    <span class="text-muted">
+                        Supervisor de Operaciones
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="supervisor-card mb-4">
+
+            <div class="d-flex flex-wrap gap-3 align-items-center">
+
+                <div class="input-group flex-grow-1">
+
+                    <span class="input-group-text bg-white">
+
+                        <i class="bi bi-search text-muted"></i>
+
+                    </span>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Buscar por placa u horario">
+
+                </div>
+
+
+                <button type="button"
+                        class="btn-chaski-navy">
+
+                    <i class="bi bi-search"></i>
+
+                    Buscar Viaje
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="row g-4 mb-4">
+
+            <div class="col-xl-7">
+
+                <div class="supervisor-card h-100">
+
+                    <h2 class="supervisor-card-title">
+                        Bus Seleccionado
+                    </h2>
+
+
+                    <div class="row g-4">
+
+                        <div class="col-md-5">
+
+                            <div class="supervisor-bus-photo">
+
+                                <img th:src="@{/img/bus-confort.png}"
+                                     alt="Bus Confort Los Chaskis">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-7">
+
+                            <div class="supervisor-bus-data">
+
+                                <span>
+                                    Unidad
+                                </span>
+
+                                <strong>
+                                    CHK-201
+                                </strong>
+
+                            </div>
+
+
+                            <div class="supervisor-bus-data">
+
+                                <span>
+                                    Servicio
+                                </span>
+
+                                <strong>
+                                    Confort 160°
+                                </strong>
+
+                            </div>
+
+
+                            <div class="supervisor-bus-data">
+
+                                <span>
+                                    Ruta
+                                </span>
+
+                                <strong>
+                                    Lima → Piura
+                                </strong>
+
+                            </div>
+
+
+                            <div class="supervisor-bus-data">
+
+                                <span>
+                                    Fecha / Hora
+                                </span>
+
+                                <strong>
+                                    10/10/2026 · 20:00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="supervisor-bus-data">
+
+                                <span>
+                                    Chofer
+                                </span>
+
+                                <strong>
+                                    Carlos Mendoza Ruiz
+                                </strong>
+
+                            </div>
+
+
+                            <div class="supervisor-bus-data">
+
+                                <span>
+                                    Licencia
+                                </span>
+
+                                <strong>
+                                    AIIIc-458721
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-xl-5">
+
+                <div class="supervisor-card h-100">
+
+                    <h2 class="supervisor-card-title">
+                        Estado de Ocupación
+                    </h2>
+
+
+                    <div class="border rounded-3">
+
+                        <div class="supervisor-counter-row">
+
+                            <span>
+                                Vendidos
+                            </span>
+
+                            <strong>
+                                26
+                            </strong>
+
+                        </div>
+
+
+                        <div class="supervisor-counter-row">
+
+                            <span>
+                                <span class="supervisor-counter-dot dot-boarded"></span>
+
+                                Abordó
+                            </span>
+
+                            <strong>
+                                21
+                            </strong>
+
+                        </div>
+
+
+                        <div class="supervisor-counter-row">
+
+                            <span>
+                                <span class="supervisor-counter-dot dot-pending"></span>
+
+                                Pendiente
+                            </span>
+
+                            <strong>
+                                3
+                            </strong>
+
+                        </div>
+
+
+                        <div class="supervisor-counter-row">
+
+                            <span>
+                                <span class="supervisor-counter-dot dot-absent"></span>
+
+                                Ausente
+                            </span>
+
+                            <strong>
+                                2
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="supervisor-card">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+                <div>
+
+                    <h2 class="supervisor-card-title mb-1">
+                        Manifiesto de Pasajeros
+                    </h2>
+
+                    <small class="text-muted">
+                        Control de pasajeros registrados.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group mb-4"
+                 style="max-width:460px;">
+
+                <span class="input-group-text bg-white">
+
+                    <i class="bi bi-search text-muted"></i>
+
+                </span>
+
+                <input type="text"
+                       id="buscarPasajero"
+                       class="form-control"
+                       placeholder="Buscar por DNI, nombre o asiento">
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="manifest-table">
+
+                    <thead>
+
+                    <tr>
+                        <th>N°</th>
+                        <th>Pasajero</th>
+                        <th>DNI</th>
+                        <th>Asiento</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                    <tr class="fila-pasajero">
+
+                        <td>
+                            1
+                        </td>
+
+                        <td>
+                            María Fernanda López
+                        </td>
+
+                        <td>
+                            74589621
+                        </td>
+
+                        <td>
+                            01A
+                        </td>
+
+                        <td>
+
+                            <span class="boarding-badge boarding-boarded estado-embarque">
+                                Abordó
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn-supervisor btn-supervisor-success btn-abordaje"
+                                    disabled>
+
+                                Abordó
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr class="fila-pasajero">
+
+                        <td>
+                            2
+                        </td>
+
+                        <td>
+                            José Ramírez Torres
+                        </td>
+
+                        <td>
+                            72458912
+                        </td>
+
+                        <td>
+                            02A
+                        </td>
+
+                        <td>
+
+                            <span class="boarding-badge boarding-pending estado-embarque">
+                                Pendiente
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn-supervisor btn-supervisor-success btn-abordaje">
+
+                                Marcar Abordó
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr class="fila-pasajero">
+
+                        <td>
+                            3
+                        </td>
+
+                        <td>
+                            Ana García Pérez
+                        </td>
+
+                        <td>
+                            70854123
+                        </td>
+
+                        <td>
+                            03C
+                        </td>
+
+                        <td>
+
+                            <span class="boarding-badge boarding-absent estado-embarque">
+                                Ausente
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn-supervisor btn-supervisor-success btn-abordaje">
+
+                                Marcar Abordó
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script th:src="@{/js/supervisor.js}"></script>
+
+</body>
+</html>
