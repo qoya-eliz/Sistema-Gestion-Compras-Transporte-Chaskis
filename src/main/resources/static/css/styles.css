@@ -1,0 +1,555 @@
+/* ==========================================================================
+   LOS CHASKIS
+   Sistema de Gestión y Transporte Interprovincial
+   Base general del Design System
+   ========================================================================== */
+
+:root {
+
+    --perla: #F6F4EF;
+    --dorado: #D4AF37;
+    --dorado-oscuro: #B8942B;
+    --dorado-texto: #8A6D12;
+    --dorado-suave: #F7EFD2;
+
+    --azul: #0D1B2A;
+    --azul-claro: #1B2E44;
+
+    --carbon: #2B2B2B;
+
+    --plata: #8C8C8C;
+    --plata-oscuro: #6B6B6B;
+    --plata-suave: #EDEBE6;
+
+    --blanco: #FFFFFF;
+    --borde: #E4E0D6;
+
+    --verde: #16A34A;
+    --verde-suave: #DCFCE7;
+    --verde-texto: #15803D;
+
+    --ambar: #F59E0B;
+    --ambar-suave: #FEF3C7;
+    --ambar-texto: #B45309;
+
+    --rojo: #DC2626;
+    --rojo-suave: #FEE2E2;
+    --rojo-texto: #B91C1C;
+
+    --dorado-gradiente:
+        linear-gradient(
+            135deg,
+            var(--dorado) 0%,
+            var(--dorado-oscuro) 100%
+        );
+
+    --sombra-suave:
+        0 2px 8px rgba(13, 27, 42, 0.05);
+
+    --sombra-card:
+        0 10px 28px rgba(13, 27, 42, 0.08);
+
+    --radio-card: 14px;
+}
+
+/* ==========================================================================
+   RESET GENERAL
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-color: var(--perla);
+    color: var(--carbon);
+
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Arial,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--azul);
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   TEXTO Y UTILIDADES
+   ========================================================================== */
+
+.text-muted {
+    color: var(--plata-oscuro) !important;
+}
+
+.text-chaski-gold {
+    color: var(--dorado) !important;
+}
+
+.text-chaski-navy {
+    color: var(--azul) !important;
+}
+
+.text-chaski-carbon {
+    color: var(--carbon) !important;
+}
+
+.bg-chaski-navy {
+    background-color: var(--azul) !important;
+}
+
+.bg-chaski-pearl {
+    background-color: var(--perla) !important;
+}
+
+.bg-chaski-gold {
+    background-color: var(--dorado) !important;
+}
+
+.border-chaski {
+    border-color: var(--borde) !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.hover-gold:hover {
+    color: var(--dorado) !important;
+}
+
+/* ==========================================================================
+   MARCA
+   ========================================================================== */
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+}
+
+.brand-logo-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.20),
+            rgba(212, 175, 55, 0.05)
+        );
+
+    border:
+        1px solid rgba(212, 175, 55, 0.40);
+
+    color: var(--dorado);
+
+    font-size: 1.4rem;
+}
+
+.brand-logo-icon.lg {
+    width: 56px;
+    height: 56px;
+}
+
+.brand-logo-img {
+    width: 78%;
+    height: 78%;
+
+    object-fit: contain;
+}
+
+.brand-text-title {
+    color: var(--blanco);
+
+    font-size: 1.22rem;
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.5px;
+}
+
+.brand-text-title span {
+    color: var(--dorado);
+}
+
+.brand-text-slogan {
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--dorado);
+
+    font-size: 0.56rem;
+    font-weight: 600;
+
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+
+.btn-chaski-navy,
+.btn-chaski-gold {
+    min-height: 40px;
+
+    padding: 9px 20px;
+
+    border: 0;
+    border-radius: 8px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 0.86rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background-color 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.btn-chaski-navy {
+    background-color: var(--azul);
+    color: var(--blanco) !important;
+
+    box-shadow:
+        0 4px 12px rgba(13, 27, 42, 0.18);
+}
+
+.btn-chaski-navy:hover {
+    background-color: var(--azul-claro);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 16px rgba(13, 27, 42, 0.22);
+}
+
+.btn-chaski-gold {
+    background: var(--dorado-gradiente);
+
+    color: var(--azul) !important;
+
+    box-shadow:
+        0 4px 12px rgba(212, 175, 55, 0.28);
+}
+
+.btn-chaski-gold:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(212, 175, 55, 0.38);
+}
+
+.btn-chaski-navy:disabled,
+.btn-chaski-gold:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+/* ==========================================================================
+   FORMULARIOS
+   ========================================================================== */
+
+.form-label {
+    color: var(--carbon);
+
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    min-height: 42px;
+
+    border:
+        1px solid var(--borde);
+
+    border-radius: 8px;
+
+    font-size: 0.86rem;
+
+    color: var(--carbon);
+
+    background-color: var(--blanco);
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.form-control::placeholder {
+    color: #A7A7A7;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--dorado);
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(212, 175, 55, 0.18);
+}
+
+.input-group-text {
+    border-color: var(--borde);
+}
+
+.form-check-input {
+    border-color: #BDBDBD;
+}
+
+.form-check-input:checked {
+    background-color: var(--azul);
+    border-color: var(--azul);
+}
+
+.form-check-input:focus {
+    border-color: var(--dorado);
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(212, 175, 55, 0.15);
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.chaski-card {
+    background-color: var(--blanco);
+
+    border:
+        1px solid var(--borde);
+
+    border-radius: var(--radio-card);
+
+    box-shadow: var(--sombra-suave);
+}
+
+/* ==========================================================================
+   BADGES Y ESTADOS
+   ========================================================================== */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 6px;
+
+    font-size: 0.70rem;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    text-transform: uppercase;
+}
+
+.status-success {
+    color: var(--verde-texto);
+
+    background-color: var(--verde-suave);
+}
+
+.status-warning {
+    color: var(--ambar-texto);
+
+    background-color: var(--ambar-suave);
+}
+
+.status-danger {
+    color: var(--rojo-texto);
+
+    background-color: var(--rojo-suave);
+}
+
+.status-neutral {
+    color: var(--plata-oscuro);
+
+    background-color: var(--plata-suave);
+}
+
+.status-primary {
+    color: var(--azul);
+
+    background-color:
+        rgba(13, 27, 42, 0.08);
+}
+
+/* ==========================================================================
+   ALERTAS
+   ========================================================================== */
+
+.alert {
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+   MODALES
+   ========================================================================== */
+
+.modal-content {
+    border: 0;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(13, 27, 42, 0.18);
+}
+
+.modal-header {
+    padding: 18px 24px;
+
+    background-color: var(--azul);
+
+    color: var(--blanco);
+
+    border-bottom: 0;
+}
+
+.modal-header .modal-title {
+    color: var(--blanco);
+}
+
+.modal-title {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-footer {
+    padding: 0 24px 24px;
+
+    border-top: 0;
+}
+
+/* ==========================================================================
+   TABLAS BASE
+   ========================================================================== */
+
+.table {
+    color: var(--carbon);
+}
+
+.table > :not(caption) > * > * {
+    border-color: var(--plata-suave);
+}
+
+/* ==========================================================================
+   SCROLLBAR
+   ========================================================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ECEAE5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #B8B3A7;
+
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #969084;
+}
+
+/* ==========================================================================
+   SELECCIÓN
+   ========================================================================== */
+
+::selection {
+    color: var(--azul);
+
+    background-color:
+        rgba(212, 175, 55, 0.42);
+}
+
+/* ==========================================================================
+   RESPONSIVE GENERAL
+   ========================================================================== */
+
+@media (max-width: 575px) {
+
+    .btn-chaski-navy,
+    .btn-chaski-gold {
+        padding:
+            9px 14px;
+    }
+
+    .brand-text-slogan {
+        display: none;
+    }
+
+}

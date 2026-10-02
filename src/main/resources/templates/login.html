@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar Sesión | Los Chaskis</title>
+
+    <link rel="icon"
+          type="image/png"
+          th:href="@{/img/favicon.png}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          th:href="@{/css/styles.css}">
+
+    <style>
+
+        .login-page {
+            min-height: 100vh;
+
+            display: flex;
+
+            background:
+                var(--perla);
+        }
+
+        .login-visual {
+            width: 56%;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            padding:
+                55px 60px;
+
+            color:
+                var(--blanco);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(7, 18, 29, 0.96),
+                    rgba(13, 27, 42, 0.76)
+                ),
+                url('/img/login-bus.png');
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            position: relative;
+        }
+
+        .login-main-message {
+            max-width: 650px;
+        }
+
+        .login-main-message h1 {
+            color: var(--blanco);
+
+            font-size:
+                clamp(2rem, 4vw, 3.3rem);
+
+            font-weight: 800;
+
+            letter-spacing: -1.4px;
+            line-height: 1.12;
+        }
+
+        .login-main-message h1 span {
+            color:
+                var(--dorado);
+        }
+
+        .login-main-message p {
+            color:
+                rgba(255, 255, 255, 0.72);
+
+            font-size: 1rem;
+
+            line-height: 1.75;
+
+            max-width: 560px;
+        }
+
+        .login-feature {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            margin-top: 17px;
+        }
+
+        .login-feature-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 10px;
+
+            color:
+                var(--dorado);
+
+            background:
+                rgba(212, 175, 55, 0.10);
+
+            border:
+                1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .login-feature strong {
+            display: block;
+
+            font-size: 0.85rem;
+        }
+
+        .login-feature small {
+            color:
+                rgba(255, 255, 255, 0.58);
+
+            font-size: 0.71rem;
+        }
+
+        .login-copyright {
+            padding-top: 20px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.10);
+
+            color:
+                rgba(255, 255, 255, 0.46);
+
+            font-size: 0.72rem;
+        }
+
+        .login-form-side {
+            width: 44%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 45px;
+        }
+
+        .login-form-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .login-card {
+            padding: 38px;
+
+            background:
+                var(--blanco);
+
+            border:
+                1px solid var(--borde);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 18px 45px rgba(13, 27, 42, 0.10);
+        }
+
+        .login-icon {
+            width: 64px;
+            height: 64px;
+
+            margin:
+                0 auto 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+                var(--dorado-suave);
+
+            color:
+                var(--dorado-texto);
+
+            font-size: 1.75rem;
+        }
+
+        .login-title {
+            margin: 0;
+
+            color:
+                var(--azul);
+
+            font-size: 1.55rem;
+            font-weight: 800;
+        }
+
+        .login-role-card {
+            position: relative;
+
+            display: block;
+
+            padding: 14px 15px;
+
+            border:
+                1px solid var(--borde);
+
+            border-radius: 10px;
+
+            cursor: pointer;
+        }
+
+        .login-role-card:hover {
+            border-color:
+                var(--dorado);
+        }
+
+        .login-role-card.selected {
+            border-color:
+                var(--dorado);
+
+            background:
+                #FDF9EC;
+        }
+
+        .login-role-card input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .role-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background:
+                rgba(13, 27, 42, 0.08);
+
+            color:
+                var(--azul);
+        }
+
+        .login-password-button {
+            border-left: 0;
+
+            background:
+                var(--blanco);
+        }
+
+        .demo-box {
+            margin-top: 20px;
+
+            padding: 13px 15px;
+
+            border-radius: 10px;
+
+            background:
+                #F8F7F3;
+
+            border:
+                1px solid var(--borde);
+        }
+
+        .mobile-logo {
+            display: none;
+        }
+
+        @media (max-width: 991px) {
+
+            .login-visual {
+                display: none;
+            }
+
+            .login-form-side {
+                width: 100%;
+
+                padding:
+                    30px 18px;
+            }
+
+            .mobile-logo {
+                display: block;
+
+                text-align: center;
+
+                margin-bottom: 25px;
+            }
+
+            .mobile-logo img {
+                max-width: 210px;
+
+                margin: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <!-- IZQUIERDA -->
+    <section class="login-visual">
+
+        <div>
+
+            <img th:src="@{/img/logo-horizontal.png}"
+                 alt="Los Chaskis"
+                 style="max-width:280px;height:auto;">
+
+        </div>
+
+
+        <div class="login-main-message">
+
+            <span class="badge bg-warning text-dark rounded-pill px-3 py-2 fw-bold mb-4">
+                INTRANET CORPORATIVA
+            </span>
+
+            <h1>
+
+                Gestión inteligente para una operación
+
+                <span>
+                    más segura y eficiente.
+                </span>
+
+            </h1>
+
+
+            <p class="mt-4">
+                Plataforma administrativa de Transportes Los Chaskis
+                para gestionar flota, choferes, rutas, viajes y
+                operaciones de embarque desde una única interfaz.
+            </p>
+
+
+            <div class="row g-3 mt-4">
+
+                <div class="col-md-6">
+
+                    <div class="login-feature">
+
+                        <div class="login-feature-icon">
+
+                            <i class="bi bi-bus-front-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Gestión de Flota
+                            </strong>
+
+                            <small>
+                                Control de unidades.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="login-feature">
+
+                        <div class="login-feature-icon">
+
+                            <i class="bi bi-signpost-2-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Rutas y Viajes
+                            </strong>
+
+                            <small>
+                                Programación operativa.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="login-feature">
+
+                        <div class="login-feature-icon">
+
+                            <i class="bi bi-person-check-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Embarque
+                            </strong>
+
+                            <small>
+                                Control de pasajeros.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="login-feature">
+
+                        <div class="login-feature-icon">
+
+                            <i class="bi bi-bar-chart-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Reportes
+                            </strong>
+
+                            <small>
+                                Indicadores de gestión.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="login-copyright">
+
+            © 2026 Transportes Los Chaskis S.A.C.
+            · Sistema Web de Gestión
+
+        </div>
+
+    </section>
+
+
+    <!-- DERECHA -->
+    <section class="login-form-side">
+
+        <div class="login-form-wrapper">
+
+            <div class="mobile-logo">
+
+                <img th:src="@{/img/logo-horizontal.png}"
+                     alt="Los Chaskis">
+
+            </div>
+
+
+            <div class="login-card">
+
+                <div class="text-center mb-4">
+
+                    <div class="login-icon">
+
+                        <i class="bi bi-shield-lock-fill"></i>
+
+                    </div>
+
+                    <h1 class="login-title">
+                        Iniciar Sesión
+                    </h1>
+
+                    <p class="text-muted small mt-2 mb-0">
+                        Ingresa tus credenciales para acceder al sistema.
+                    </p>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Correo Electrónico
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text bg-white border-end-0">
+
+                            <i class="bi bi-envelope text-muted"></i>
+
+                        </span>
+
+                        <input type="email"
+                               id="correoLogin"
+                               class="form-control border-start-0"
+                               placeholder="usuario@loschaskis.com"
+                               value="admin@loschaskis.com">
+
+                    </div>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Contraseña
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text bg-white border-end-0">
+
+                            <i class="bi bi-lock text-muted"></i>
+
+                        </span>
+
+                        <input type="password"
+                               id="passwordLogin"
+                               class="form-control border-start-0 border-end-0"
+                               placeholder="Contraseña"
+                               value="12345678">
+
+                        <button type="button"
+                                id="btnMostrarPassword"
+                                class="input-group-text login-password-button">
+
+                            <i class="bi bi-eye"
+                               id="iconoPassword"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <label class="form-label mb-2">
+                    Tipo de Acceso
+                </label>
+
+
+                <div class="row g-2 mb-4">
+
+                    <div class="col-6">
+
+                        <label class="login-role-card selected">
+
+                            <input type="radio"
+                                   name="rolAcceso"
+                                   value="ADMIN"
+                                   checked>
+
+                            <div class="d-flex align-items-center gap-2">
+
+                                <div class="role-icon">
+
+                                    <i class="bi bi-person-gear"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong class="d-block text-dark small">
+                                        Administrador
+                                    </strong>
+
+                                    <small class="text-muted">
+                                        Gestión general
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="col-6">
+
+                        <label class="login-role-card">
+
+                            <input type="radio"
+                                   name="rolAcceso"
+                                   value="SUPERVISOR">
+
+                            <div class="d-flex align-items-center gap-2">
+
+                                <div class="role-icon">
+
+                                    <i class="bi bi-person-check"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong class="d-block text-dark small">
+                                        Supervisor
+                                    </strong>
+
+                                    <small class="text-muted">
+                                        Operaciones
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeLogin"
+                     class="alert alert-danger small py-2 d-none">
+
+                    <i class="bi bi-exclamation-circle-fill me-1"></i>
+
+                    Ingresa un correo y contraseña válidos.
+
+                </div>
+
+
+                <button id="btnIniciarSesion"
+                        type="button"
+                        class="btn-chaski-gold w-100 py-3">
+
+                    <i class="bi bi-box-arrow-in-right"></i>
+
+                    Iniciar Sesión
+
+                </button>
+
+
+                <div class="demo-box">
+
+                    <div class="d-flex gap-2">
+
+                        <i class="bi bi-info-circle-fill text-chaski-gold"></i>
+
+                        <div>
+
+                            <strong class="small text-dark d-block mb-1">
+                                Acceso demostrativo
+                            </strong>
+
+                            <small class="text-muted">
+                                La autenticación real se implementará
+                                posteriormente.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="text-center mt-4">
+
+                    <a th:href="@{/}"
+                       class="small text-muted text-decoration-none">
+
+                        <i class="bi bi-arrow-left me-1"></i>
+
+                        Volver al Portal Público
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+
+            const password =
+                document.getElementById(
+                    'passwordLogin'
+                );
+
+            const botonPassword =
+                document.getElementById(
+                    'btnMostrarPassword'
+                );
+
+            const iconoPassword =
+                document.getElementById(
+                    'iconoPassword'
+                );
+
+            const botonLogin =
+                document.getElementById(
+                    'btnIniciarSesion'
+                );
+
+            const mensaje =
+                document.getElementById(
+                    'mensajeLogin'
+                );
+
+            const roles =
+                document.querySelectorAll(
+                    'input[name="rolAcceso"]'
+                );
+
+
+            botonPassword.addEventListener(
+                'click',
+                function () {
+
+                    const oculto =
+                        password.type ===
+                        'password';
+
+                    password.type =
+                        oculto
+                            ? 'text'
+                            : 'password';
+
+                    iconoPassword.className =
+                        oculto
+                            ? 'bi bi-eye-slash'
+                            : 'bi bi-eye';
+
+                }
+            );
+
+
+            roles.forEach(
+                function (radio) {
+
+                    radio.addEventListener(
+                        'change',
+                        function () {
+
+                            document
+                                .querySelectorAll(
+                                    '.login-role-card'
+                                )
+                                .forEach(
+                                    function (card) {
+
+                                        card.classList.remove(
+                                            'selected'
+                                        );
+
+                                    }
+                                );
+
+                            radio
+                                .closest(
+                                    '.login-role-card'
+                                )
+                                .classList.add(
+                                    'selected'
+                                );
+
+                        }
+                    );
+
+                }
+            );
+
+
+            botonLogin.addEventListener(
+                'click',
+                function () {
+
+                    const correo =
+                        document
+                            .getElementById(
+                                'correoLogin'
+                            )
+                            .value
+                            .trim();
+
+                    const clave =
+                        password
+                            .value
+                            .trim();
+
+                    const rol =
+                        document.querySelector(
+                            'input[name="rolAcceso"]:checked'
+                        ).value;
+
+
+                    if (!correo || !clave) {
+
+                        mensaje.classList.remove(
+                            'd-none'
+                        );
+
+                        return;
+
+                    }
+
+
+                    mensaje.classList.add(
+                        'd-none'
+                    );
+
+
+                    if (
+                        rol ===
+                        'SUPERVISOR'
+                    ) {
+
+                        window.location.href =
+                            '/supervisor/dashboard';
+
+                    } else {
+
+                        window.location.href =
+                            '/admin/dashboard';
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
